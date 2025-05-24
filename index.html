@@ -1,27 +1,328 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+Copy<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raccordement Électrique Enedis | Partenaire n°1 France | 09 70 70 95 70</title>
+    <meta name="description" content="Partenaire n°1 en France pour raccordement Enedis. Service professionnel de gestion administrative. Appelez 09 70 70 95 70">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'enedis-blue': '#003d82',
+                        'enedis-light': '#0066cc',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Ads Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16698052873"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-16698052873');
+        
+        // Form tracking functions
+        function gtag_report_form_start() {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16698052873/5o3ICMLjpMUaEImioJo-'
+            });
+        }
+        
+        function gtag_report_form_submit() {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16698052873/PqZMCJW-tMUaEImioJo-'
+            });
+        }
+        
+        function gtag_report_purchase() {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16698052873/IFUxCJLHtMUaEImioJo-',
+                'transaction_id': ''
+            });
+        }
+    </script>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="fr"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Raccordement Électrique Enedis&lt;/title&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Partenaire n°1 en France&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Site en construction...&lt;/p&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="text-enedis-blue font-bold text-xl">Raccordement Électrique</div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="tel:0970709570" class="text-enedis-blue font-semibold hover:text-enedis-light">
+                        📞 09 70 70 95 70
+                    </a>
+                    <button onclick="scrollToForm()" class="bg-enedis-blue text-white px-6 py-2 rounded-lg hover:bg-enedis-light transition-colors">
+                        Faire ma demande
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-enedis-blue to-enedis-light text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                        Partenaire n°1 en France<br>
+                        <span class="text-blue-200">Votre demande de raccordement</span><br>
+                        Enedis simple et rapide
+                    </h1>
+                    <p class="text-xl mb-8 text-blue-100">
+                        Service professionnel de gestion administrative pour accélérer votre raccordement électrique auprès d'Enedis.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToForm(); gtag_report_form_start();" class="bg-white text-enedis-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                            Commencer ma demande
+                        </button>
+                        <a href="tel:0970709570" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-enedis-blue transition-colors text-center">
+                            Nous contacter
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="bg-white/10 rounded-lg p-8 backdrop-blur">
+                        <h3 class="text-2xl font-bold mb-4">Traitement Prioritaire</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="text-green-300 mr-3">✓</span>
+                                Formulaire en 5 minutes
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-300 mr-3">✓</span>
+                                Traitement sous 24h
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-300 mr-3">✓</span>
+                                Suivi personnalisé
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-300 mr-3">✓</span>
+                                Accompagnement complet
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Votre raccordement en 4 étapes
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Un processus simplifié pour votre raccordement Enedis
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-enedis-blue text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">Demande en ligne</h3>
+                    <p class="text-gray-600">Formulaire simplifié en 5 minutes</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-enedis-blue text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">Constitution du dossier</h3>
+                    <p class="text-gray-600">Préparation complète de votre dossier</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-enedis-blue text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">Soumission accélérée</h3>
+                    <p class="text-gray-600">Dépôt prioritaire chez Enedis</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-enedis-blue text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+                    <h3 class="text-xl font-bold mb-2">Raccordement finalisé</h3>
+                    <p class="text-gray-600">Activation rapide de votre installation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Types -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16">Tous types de raccordement Enedis</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-enedis-blue text-4xl mb-4">🏠</div>
+                    <h3 class="text-xl font-bold mb-2">Raccordement définitif</h3>
+                    <p class="text-gray-600">Maisons neuves et branchement électrique permanent</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-enedis-blue text-4xl mb-4">🏗️</div>
+                    <h3 class="text-xl font-bold mb-2">Raccordement provisoire</h3>
+                    <p class="text-gray-600">Chantiers, événements et installations temporaires</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-enedis-blue text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Modification de puissance</h3>
+                    <p class="text-gray-600">Adaptation à vos nouveaux besoins énergétiques</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-enedis-blue text-4xl mb-4">☀️</div>
+                    <h3 class="text-xl font-bold mb-2">Solutions photovoltaïques</h3>
+                    <p class="text-gray-600">Raccordement pour production d'énergie solaire</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-enedis-blue text-4xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-2">Déplacement de compteur</h3>
+                    <p class="text-gray-600">Modification d'emplacement de votre installation</p>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-enedis-blue text-4xl mb-4">🏢</div>
+                    <h3 class="text-xl font-bold mb-2">Raccordement collectif</h3>
+                    <p class="text-gray-600">Immeubles et installations professionnelles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="py-20 bg-enedis-blue">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white mb-4">
+                    Commencez votre demande de raccordement
+                </h2>
+                <p class="text-xl text-blue-100">
+                    Particuliers et professionnels - Formulaire simplifié en 5 minutes
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-lg p-8">
+                <form id="raccordement-form" onsubmit="handleFormSubmit(event)">
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Type de client *</label>
+                            <select name="client_type" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent">
+                                <option value="">Sélectionnez</option>
+                                <option value="particulier">Particulier</option>
+                                <option value="professionnel">Professionnel</option>
+                                <option value="collectivite">Collectivité</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Type de raccordement *</label>
+                            <select name="raccordement_type" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent">
+                                <option value="">Sélectionnez</option>
+                                <option value="definitif">Raccordement définitif</option>
+                                <option value="provisoire">Raccordement provisoire</option>
+                                <option value="modification">Modification de puissance</option>
+                                <option value="photovoltaique">Solution photovoltaïque</option>
+                                <option value="deplacement">Déplacement de compteur</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nom *</label>
+                            <input type="text" name="nom" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Prénom *</label>
+                            <input type="text" name="prenom" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Téléphone *</label>
+                            <input type="tel" name="telephone" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Adresse du projet *</label>
+                        <input type="text" name="adresse" required placeholder="Adresse complète du raccordement" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description du projet</label>
+                        <textarea name="description" rows="4" placeholder="Décrivez votre projet de raccordement..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-enedis-blue focus:border-transparent"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="bg-enedis-blue text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-enedis-light transition-colors">
+                            Envoyer ma demande
+                        </button>
+                        <p class="text-sm text-gray-600 mt-4">
+                            Nous vous contacterons sous 24h au 09 70 70 95 70
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Raccordement Électrique</h3>
+                    <p class="text-gray-400">Service professionnel d'assistance pour vos démarches de raccordement électrique Enedis.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact</h3>
+                    <p class="text-gray-400 mb-2">📞 <a href="tel:0970709570" class="hover:text-white">09 70 70 95 70</a></p>
+                    <p class="text-gray-400 mb-2">✉️ <a href="mailto:contact@raccordement-elec.fr" class="hover:text-white">contact@raccordement-elec.fr</a></p>
+                    <p class="text-gray-400">🕒 Lundi-Vendredi 8h-20h</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Services</h3>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>Raccordement définitif</li>
+                        <li>Raccordement provisoire</li>
+                        <li>Solutions photovoltaïques</li>
+                        <li>Modification de puissance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Raccordement Électrique. Service d'assistance pour démarches Enedis.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            gtag_report_form_submit();
+            
+            // Simulate form processing
+            alert('Merci pour votre demande ! Nous vous contacterons sous 24h au 09 70 70 95 70');
+            
+            // Here you would normally send the form data to your backend
+            // For now, we'll just reset the form
+            document.getElementById('raccordement-form').reset();
+        }
+    </script>
 </body>
 </html>
