@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raccordement Électrique Enedis - Votre Partenaire Expert France</title>
-    <meta name="description" content="Service expert N°1 en France pour vos raccordements électriques Enedis. Accompagnement administratif professionnel pour particuliers, professionnels et collectivités. Processus simplifié et suivi personnalisé.">
+    <title>Raccordement Électrique Enedis - Votre Partenaire Expert N°1 France</title>
+    <meta name="description" content="Service expert N°1 en France pour vos raccordements électriques Enedis. Accompagnement administratif professionnel pour particuliers, professionnels et collectivités.">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,18 +17,6 @@
       gtag('js', new Date());
       gtag('config', 'G-6LL9H8D08T');
     </script>
-
-    <!-- Google Ads Global Tag -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GT-MJKTJGCK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GT-MJKTJGCK');
-    </script>
-
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
 
     <style>
         * {
@@ -231,7 +219,7 @@
             display: block;
         }
         
-        .address-dropdown {
+        .address-suggestions {
             position: absolute;
             top: 100%;
             left: 0;
@@ -240,31 +228,25 @@
             border: 1px solid #e5e7eb;
             border-radius: 8px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 10;
             max-height: 200px;
             overflow-y: auto;
-            z-index: 1000;
         }
         
-        .address-option {
+        .address-suggestion {
             padding: 12px 16px;
             cursor: pointer;
             border-bottom: 1px solid #f3f4f6;
         }
         
-        .address-option:hover {
-            background: #f9fafb;
+        .address-suggestion:hover {
+            background: #f8fafc;
         }
         
-        .address-option:last-child {
-            border-bottom: none;
-        }
-        
-        .phone-header {
-            color: white !important;
-        }
-        
-        .phone-header:hover {
-            color: var(--enedis-blue) !important;
+        .error-message {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 4px;
         }
         
         @media (max-width: 768px) {
@@ -289,15 +271,16 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#" onclick="showPage('home')" class="text-gray-700 hover:text-enedis-blue transition-colors font-medium">Accueil</a>
                     <a href="#services" class="text-gray-700 hover:text-enedis-blue transition-colors font-medium">Services</a>
-                    <a href="#faq" onclick="showPage('faq')" class="text-gray-700 hover:text-enedis-blue transition-colors font-medium">FAQ</a>
+                    <a href="#faq" class="text-gray-700 hover:text-enedis-blue transition-colors font-medium">FAQ</a>
+                    <a href="#contact" class="text-gray-700 hover:text-enedis-blue transition-colors font-medium">Contact</a>
                 </div>
                 
                 <!-- CTA -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <button onclick="startForm()" class="btn-primary">
+                    <button onclick="showPage('formulaire')" class="btn-primary">
                         Faire ma demande
                     </button>
-                    <a href="tel:0970709570" class="phone-header transition-colors flex items-center font-medium">
+                    <a href="tel:0970709570" class="text-white hover:text-enedis-blue transition-colors flex items-center font-medium">
                         <i class="fas fa-phone mr-2 text-enedis-green"></i>
                         09 70 70 95 70
                     </a>
@@ -317,8 +300,9 @@
             <div class="px-4 py-4 space-y-3">
                 <a href="#" onclick="showPage('home')" class="block py-2 text-gray-700 font-medium">Accueil</a>
                 <a href="#services" class="block py-2 text-gray-700 font-medium">Services</a>
-                <a href="#faq" onclick="showPage('faq')" class="block py-2 text-gray-700 font-medium">FAQ</a>
-                <button onclick="startForm()" class="btn-primary w-full mt-4">Faire ma demande</button>
+                <a href="#faq" class="block py-2 text-gray-700 font-medium">FAQ</a>
+                <a href="#contact" class="block py-2 text-gray-700 font-medium">Contact</a>
+                <button onclick="showPage('formulaire')" class="btn-primary w-full mt-4">Faire ma demande</button>
                 <a href="tel:0970709570" class="block py-2 text-center text-gray-600 font-medium">
                     <i class="fas fa-phone mr-2 text-enedis-green"></i>09 70 70 95 70
                 </a>
@@ -344,7 +328,7 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                    <button onclick="startForm()" class="btn-primary text-lg">
+                    <button onclick="showPage('formulaire')" class="btn-primary text-lg">
                         <i class="fas fa-arrow-right mr-3"></i>
                         Commencer ma demande
                     </button>
@@ -354,7 +338,7 @@
                     </a>
                 </div>
                 
-                <div class="mt-12 text-lg opacity-90">
+                <div class="mt-12 flex items-center justify-center text-lg opacity-90">
                     <i class="fas fa-star text-yellow-400 mr-2"></i>
                     Plus de 15 000 clients satisfaits
                 </div>
@@ -365,7 +349,7 @@
         <section class="py-16 bg-white">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-3xl font-bold text-gray-900 mb-8">
-                    Votre Demande de Raccordement en 5 Étapes
+                    Votre Demande de Raccordement en 4 Étapes
                 </h2>
                 <p class="text-lg text-gray-600 mb-8">
                     Processus simplifié pour votre raccordement Enedis personnalisé
@@ -383,7 +367,7 @@
                     </div>
                 </div>
                 
-                <button onclick="startForm()" class="btn-primary">
+                <button onclick="showPage('formulaire')" class="btn-primary">
                     Démarrer ma demande
                 </button>
             </div>
@@ -402,6 +386,7 @@
                 </div>
                 
                 <div class="grid md:grid-cols-4 gap-8">
+                    <!-- Étape 1 -->
                     <div class="text-center">
                         <div class="step-circle step-1">1</div>
                         <h3 class="text-xl font-bold mb-4 text-gray-900">Formulaire</h3>
@@ -410,6 +395,7 @@
                         </p>
                     </div>
                     
+                    <!-- Étape 2 -->
                     <div class="text-center">
                         <div class="step-circle step-2">2</div>
                         <h3 class="text-xl font-bold mb-4 text-gray-900">Préparation</h3>
@@ -418,6 +404,7 @@
                         </p>
                     </div>
                     
+                    <!-- Étape 3 -->
                     <div class="text-center">
                         <div class="step-circle step-3">3</div>
                         <h3 class="text-xl font-bold mb-4 text-gray-900">Suivi</h3>
@@ -426,6 +413,7 @@
                         </p>
                     </div>
                     
+                    <!-- Étape 4 -->
                     <div class="text-center">
                         <div class="step-circle step-4">4</div>
                         <h3 class="text-xl font-bold mb-4 text-gray-900">Raccordement</h3>
@@ -450,6 +438,7 @@
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Nouveau -->
                     <div class="card-hover text-center">
                         <div class="w-16 h-16 bg-enedis-blue rounded-2xl flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-home text-white text-2xl"></i>
@@ -460,6 +449,7 @@
                         </p>
                     </div>
                     
+                    <!-- Provisoire -->
                     <div class="card-hover text-center">
                         <div class="w-16 h-16 bg-enedis-green rounded-2xl flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-clock text-white text-2xl"></i>
@@ -470,6 +460,7 @@
                         </p>
                     </div>
                     
+                    <!-- Modification -->
                     <div class="card-hover text-center">
                         <div class="w-16 h-16" style="background: #6366f1;" class="rounded-2xl flex items-center justify-center mx-auto mb-6">
                             <i class="fas fa-tools text-white text-2xl"></i>
@@ -492,87 +483,12 @@
                 <p class="text-xl mb-12 opacity-90">
                     Démarrez votre demande de raccordement électrique dès maintenant
                 </p>
-                <button onclick="startForm()" class="bg-enedis-green hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300">
+                <button onclick="showPage('formulaire')" class="bg-enedis-green hover:bg-green-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all duration-300">
                     <i class="fas fa-play mr-3"></i>
                     Faire ma demande
                 </button>
             </div>
         </section>
-    </div>
-
-    <!-- Page FAQ -->
-    <div id="faq" class="page">
-        <div class="py-16 bg-white">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- Breadcrumb -->
-                <nav class="flex mb-8" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                        <li class="inline-flex items-center">
-                            <a href="#" onclick="showPage('home')" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-enedis-blue">
-                                <i class="fas fa-home mr-2"></i>
-                                Accueil
-                            </a>
-                        </li>
-                        <li>
-                            <div class="flex items-center">
-                                <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
-                                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">FAQ</span>
-                            </div>
-                        </li>
-                    </ol>
-                </nav>
-
-                <div class="text-center mb-16">
-                    <h1 class="text-4xl font-bold text-gray-900 mb-8">Questions Fréquentes</h1>
-                    <p class="text-xl text-gray-600">Tout ce que vous devez savoir sur le raccordement Enedis</p>
-                </div>
-
-                <div class="space-y-8">
-                    <div class="bg-gray-50 rounded-2xl p-8">
-                        <h3 class="text-xl font-bold mb-4 text-gray-900">Qu'est-ce qu'un raccordement Enedis ?</h3>
-                        <p class="text-gray-600">
-                            Le raccordement Enedis permet de connecter votre installation électrique au réseau public d'électricité. Cette opération consiste à créer un point de livraison incluant un compteur et un disjoncteur pour sécuriser l'installation. C'est une étape indispensable avant de pouvoir souscrire un contrat de fourniture d'énergie.
-                        </p>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-2xl p-8">
-                        <h3 class="text-xl font-bold mb-4 text-gray-900">Quels sont les délais pour un raccordement Enedis ?</h3>
-                        <p class="text-gray-600">
-                            Les délais varient selon le type de raccordement : 2 à 6 mois pour un raccordement simple, 6 à 18 mois pour un raccordement nécessitant une extension du réseau. Avec notre accompagnement expert, nous optimisons ces délais en préparant un dossier complet et conforme dès le premier dépôt.
-                        </p>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-2xl p-8">
-                        <h3 class="text-xl font-bold mb-4 text-gray-900">Qu'est-ce que le certificat Consuel ?</h3>
-                        <p class="text-gray-600">
-                            Le Consuel (Comité national pour la sécurité des usagers de l'électricité) certifie la conformité de votre installation électrique selon la norme NF C 15-100. Ce certificat est obligatoire pour la mise en service et doit être obtenu avant votre demande de raccordement. Nous vous accompagnons dans cette démarche.
-                        </p>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-2xl p-8">
-                        <h3 class="text-xl font-bold mb-4 text-gray-900">Combien coûte un raccordement Enedis ?</h3>
-                        <p class="text-gray-600">
-                            Le coût dépend de plusieurs facteurs : puissance demandée, distance au réseau existant, type de raccordement. Comptez entre 800€ et 2000€ pour un raccordement standard. Notre service d'accompagnement administratif est facturé séparément et vous garantit un dossier traité rapidement.
-                        </p>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-2xl p-8">
-                        <h3 class="text-xl font-bold mb-4 text-gray-900">Pourquoi choisir votre service d'accompagnement ?</h3>
-                        <p class="text-gray-600">
-                            Notre expertise vous fait gagner du temps et évite les erreurs coûteuses. Nous préparons un dossier complet et conforme, assurons le suivi avec Enedis, et vous tenons informé à chaque étape. Plus de 15 000 clients nous font confiance pour leur raccordement électrique.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="text-center mt-16">
-                    <p class="text-gray-600 mb-6">Vous ne trouvez pas la réponse à votre question ?</p>
-                    <a href="tel:0970709570" class="btn-primary">
-                        <i class="fas fa-phone mr-2"></i>
-                        Contactez-nous au 09 70 70 95 70
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Page Formulaire -->
@@ -608,10 +524,10 @@
                     <!-- Progress Bar -->
                     <div class="mb-8">
                         <div class="progress-bar">
-                            <div class="progress-fill" id="progress-fill" style="width: 20%"></div>
+                            <div class="progress-fill" id="progress-fill" style="width: 25%"></div>
                         </div>
                         <div class="flex justify-between mt-4 text-sm">
-                            <span id="step-label" class="font-medium text-gray-700">Étape 1 sur 5</span>
+                            <span id="step-label" class="font-medium text-gray-700">Étape 1 sur 4</span>
                             <span id="step-title" class="text-gray-600">Type d'utilisateur</span>
                         </div>
                     </div>
@@ -622,7 +538,8 @@
                         <div class="form-step active" id="step-1">
                             <h2 class="text-2xl font-bold mb-6 text-gray-900">Type d'utilisateur</h2>
                             
-                            <div class="mb-8">
+                            <!-- Type d'utilisateur -->
+                            <div class="mb-6">
                                 <label class="block text-sm font-semibold text-gray-700 mb-4">Sélectionnez votre profil</label>
                                 <div class="grid md:grid-cols-3 gap-4">
                                     <div class="radio-option" onclick="selectUserType('particulier')">
@@ -650,22 +567,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="error-message text-red-500 text-sm mt-2 hidden" id="userType-error">Veuillez sélectionner votre type d'utilisateur</div>
+                                <div class="error-message hidden" id="userType-error">Veuillez sélectionner votre type d'utilisateur</div>
                             </div>
 
                             <!-- Coordonnées -->
-                            <h3 class="text-xl font-semibold mb-6 text-gray-900">Vos coordonnées</h3>
+                            <h3 class="text-lg font-semibold mb-4 text-gray-900">Vos coordonnées</h3>
                             
                             <div class="grid md:grid-cols-2 gap-6 mb-6">
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-3">Prénom *</label>
                                     <input type="text" name="prenom" required class="form-input" placeholder="Votre prénom">
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="prenom-error">Ce champ est obligatoire</div>
+                                    <div class="error-message hidden" id="prenom-error">Ce champ est obligatoire</div>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-3">Nom *</label>
                                     <input type="text" name="nom" required class="form-input" placeholder="Votre nom">
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="nom-error">Ce champ est obligatoire</div>
+                                    <div class="error-message hidden" id="nom-error">Ce champ est obligatoire</div>
                                 </div>
                             </div>
                             
@@ -673,14 +590,14 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-3">Adresse email *</label>
                                 <input type="email" name="email" required class="form-input" placeholder="votre@email.com">
                                 <div class="text-xs text-gray-500 mt-1">Nous utiliserons cette adresse pour vous envoyer le suivi de votre demande</div>
-                                <div class="error-message text-red-500 text-sm mt-1 hidden" id="email-error">Veuillez saisir une adresse email valide</div>
+                                <div class="error-message hidden" id="email-error">Veuillez saisir une adresse email valide</div>
                             </div>
                             
                             <div class="mb-6">
                                 <label class="block text-sm font-semibold text-gray-700 mb-3">Téléphone *</label>
                                 <input type="tel" name="telephone" required class="form-input" placeholder="06 12 34 56 78" id="phone-input">
                                 <div class="text-xs text-gray-500 mt-1">Numéro de téléphone français (fixe ou mobile) pour vous contacter</div>
-                                <div class="error-message text-red-500 text-sm mt-1 hidden" id="telephone-error">Veuillez saisir un numéro de téléphone français valide</div>
+                                <div class="error-message hidden" id="telephone-error">Veuillez saisir un numéro de téléphone français valide</div>
                             </div>
 
                             <!-- Champs conditionnels -->
@@ -695,7 +612,7 @@
                                         </div>
                                     </label>
                                     <input type="text" name="raisonSociale" class="form-input" placeholder="Nom de votre entreprise">
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="raisonSociale-error">Ce champ est obligatoire</div>
+                                    <div class="error-message hidden" id="raisonSociale-error">Ce champ est obligatoire</div>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-3">
@@ -705,9 +622,9 @@
                                             <span class="tooltiptext">Le SIREN est composé de 9 chiffres</span>
                                         </div>
                                     </label>
-                                    <input type="text" name="siren" class="form-input" placeholder="123456789" maxlength="9">
+                                    <input type="text" name="siren" class="form-input" placeholder="123 456 789" maxlength="9">
                                     <div class="text-xs text-gray-500 mt-1">9 chiffres uniquement</div>
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="siren-error">Le SIREN doit contenir exactement 9 chiffres</div>
+                                    <div class="error-message hidden" id="siren-error">Le SIREN doit contenir exactement 9 chiffres</div>
                                 </div>
                             </div>
 
@@ -716,7 +633,7 @@
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-3">Nom de la collectivité *</label>
                                     <input type="text" name="nomCollectivite" class="form-input" placeholder="Nom de la collectivité">
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="nomCollectivite-error">Ce champ est obligatoire</div>
+                                    <div class="error-message hidden" id="nomCollectivite-error">Ce champ est obligatoire</div>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-semibold text-gray-700 mb-3">
@@ -726,9 +643,9 @@
                                             <span class="tooltiptext">Le SIREN est composé de 9 chiffres</span>
                                         </div>
                                     </label>
-                                    <input type="text" name="sirenCollectivite" class="form-input" placeholder="123456789" maxlength="9">
+                                    <input type="text" name="sirenCollectivite" class="form-input" placeholder="123 456 789" maxlength="9">
                                     <div class="text-xs text-gray-500 mt-1">9 chiffres uniquement</div>
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="sirenCollectivite-error">Le SIREN doit contenir exactement 9 chiffres</div>
+                                    <div class="error-message hidden" id="sirenCollectivite-error">Le SIREN doit contenir exactement 9 chiffres</div>
                                 </div>
                             </div>
                         </div>
@@ -744,7 +661,7 @@
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-3">Adresse *</label>
                                         <input type="text" name="adresseFacturation" required class="form-input" placeholder="123 Rue de la République">
-                                        <div class="error-message text-red-500 text-sm mt-1 hidden" id="adresseFacturation-error">Ce champ est obligatoire</div>
+                                        <div class="error-message hidden" id="adresseFacturation-error">Ce champ est obligatoire</div>
                                     </div>
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-3">Complément d'adresse</label>
@@ -754,12 +671,12 @@
                                         <div>
                                             <label class="block text-sm font-semibold text-gray-700 mb-3">Code postal *</label>
                                             <input type="text" name="codePostalFacturation" required class="form-input" placeholder="75001" maxlength="5">
-                                            <div class="error-message text-red-500 text-sm mt-1 hidden" id="codePostalFacturation-error">Code postal invalide (5 chiffres requis)</div>
+                                            <div class="error-message hidden" id="codePostalFacturation-error">Code postal invalide (5 chiffres requis)</div>
                                         </div>
                                         <div>
                                             <label class="block text-sm font-semibold text-gray-700 mb-3">Ville *</label>
                                             <input type="text" name="villeFacturation" required class="form-input" placeholder="Paris">
-                                            <div class="error-message text-red-500 text-sm mt-1 hidden" id="villeFacturation-error">Ce champ est obligatoire</div>
+                                            <div class="error-message hidden" id="villeFacturation-error">Ce champ est obligatoire</div>
                                         </div>
                                     </div>
                                 </div>
@@ -777,9 +694,9 @@
                                     <div class="space-y-4">
                                         <div class="relative">
                                             <label class="block text-sm font-semibold text-gray-700 mb-3">Adresse du projet *</label>
-                                            <input type="text" name="adresseProjet" class="form-input" placeholder="Commencez à taper votre adresse..." id="address-autocomplete">
-                                            <div id="address-dropdown" class="address-dropdown hidden"></div>
-                                            <div class="error-message text-red-500 text-sm mt-1 hidden" id="adresseProjet-error">Ce champ est obligatoire</div>
+                                            <input type="text" name="adresseProjet" class="form-input" placeholder="Commencez à taper votre adresse..." id="address-input">
+                                            <div id="address-suggestions" class="address-suggestions hidden"></div>
+                                            <div class="error-message hidden" id="adresseProjet-error">Ce champ est obligatoire</div>
                                         </div>
                                         <div>
                                             <label class="block text-sm font-semibold text-gray-700 mb-3">Complément d'adresse</label>
@@ -789,12 +706,12 @@
                                             <div>
                                                 <label class="block text-sm font-semibold text-gray-700 mb-3">Code postal *</label>
                                                 <input type="text" name="codePostalProjet" class="form-input" placeholder="75002" maxlength="5" id="postal-project">
-                                                <div class="error-message text-red-500 text-sm mt-1 hidden" id="codePostalProjet-error">Code postal invalide (5 chiffres requis)</div>
+                                                <div class="error-message hidden" id="codePostalProjet-error">Code postal invalide (5 chiffres requis)</div>
                                             </div>
                                             <div>
                                                 <label class="block text-sm font-semibold text-gray-700 mb-3">Ville *</label>
                                                 <input type="text" name="villeProjet" class="form-input" placeholder="Paris" id="city-project">
-                                                <div class="error-message text-red-500 text-sm mt-1 hidden" id="villeProjet-error">Ce champ est obligatoire</div>
+                                                <div class="error-message hidden" id="villeProjet-error">Ce champ est obligatoire</div>
                                             </div>
                                         </div>
                                     </div>
@@ -816,7 +733,7 @@
                                             <span class="tooltiptext">Nouveau = première installation, Provisoire = usage temporaire, Augmentation = modifier la puissance existante</span>
                                         </div>
                                     </label>
-                                    <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                    <div class="grid md:grid-cols-2 gap-4">
                                         <div class="radio-option" onclick="selectOption('typeRaccordement', 'nouveau')">
                                             <input type="radio" name="typeRaccordement" value="nouveau" class="sr-only">
                                             <div class="font-semibold">Nouveau</div>
@@ -827,8 +744,6 @@
                                             <div class="font-semibold">Provisoire</div>
                                             <div class="text-sm text-gray-600">Installation temporaire</div>
                                         </div>
-                                    </div>
-                                    <div class="grid md:grid-cols-3 gap-4">
                                         <div class="radio-option" onclick="selectOption('typeRaccordement', 'augmentation')">
                                             <input type="radio" name="typeRaccordement" value="augmentation" class="sr-only">
                                             <div class="font-semibold">Augmentation de puissance</div>
@@ -845,7 +760,7 @@
                                             <div class="text-sm text-gray-600">Autre type de raccordement</div>
                                         </div>
                                     </div>
-                                    <div class="error-message text-red-500 text-sm mt-2 hidden" id="typeRaccordement-error">Veuillez sélectionner un type de raccordement</div>
+                                    <div class="error-message hidden" id="typeRaccordement-error">Veuillez sélectionner un type de raccordement</div>
                                 </div>
 
                                 <!-- Type de projet -->
@@ -859,7 +774,7 @@
                                         <option value="terrain">Terrain nu</option>
                                         <option value="industriel">Bâtiment industriel</option>
                                     </select>
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="typeProjet-error">Veuillez sélectionner un type de projet</div>
+                                    <div class="error-message hidden" id="typeProjet-error">Veuillez sélectionner un type de projet</div>
                                 </div>
 
                                 <!-- Type d'alimentation -->
@@ -888,7 +803,7 @@
                                             <div class="text-sm text-gray-600">Nous vous conseillerons</div>
                                         </div>
                                     </div>
-                                    <div class="error-message text-red-500 text-sm mt-2 hidden" id="typeAlimentation-error">Veuillez sélectionner un type d'alimentation</div>
+                                    <div class="error-message hidden" id="typeAlimentation-error">Veuillez sélectionner un type d'alimentation</div>
                                 </div>
 
                                 <!-- Puissance -->
@@ -897,7 +812,7 @@
                                     <select name="puissance" class="form-input" id="puissance-select">
                                         <option value="">Sélectionnez la puissance</option>
                                     </select>
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="puissance-error">Veuillez sélectionner une puissance</div>
+                                    <div class="error-message hidden" id="puissance-error">Veuillez sélectionner une puissance</div>
                                 </div>
                             </div>
                         </div>
@@ -926,7 +841,7 @@
                                         <option value="travaux-cours">Travaux en cours</option>
                                         <option value="travaux-termines">Travaux terminés</option>
                                     </select>
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="etatProjet-error">Veuillez sélectionner l'état de votre projet</div>
+                                    <div class="error-message hidden" id="etatProjet-error">Veuillez sélectionner l'état de votre projet</div>
                                 </div>
 
                                 <div>
@@ -938,7 +853,7 @@
                                         <option value="plus-6-mois">Plus de 6 mois</option>
                                         <option value="des-que-possible">Dès que possible</option>
                                     </select>
-                                    <div class="error-message text-red-500 text-sm mt-1 hidden" id="delaiSouhaite-error">Veuillez sélectionner un délai</div>
+                                    <div class="error-message hidden" id="delaiSouhaite-error">Veuillez sélectionner un délai</div>
                                 </div>
 
                                 <div>
@@ -956,7 +871,7 @@
                                         et confirme que les informations fournies sont exactes.
                                     </span>
                                 </label>
-                                <div class="error-message text-red-500 text-sm mt-1 hidden" id="acceptCGV-error">Vous devez accepter les conditions générales</div>
+                                <div class="error-message hidden" id="acceptCGV-error">Vous devez accepter les conditions générales</div>
                             </div>
                         </div>
 
@@ -972,43 +887,11 @@
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </button>
                             <button type="button" id="submit-btn" onclick="submitForm()" class="btn-primary hidden">
-                                <i class="fas fa-check mr-2"></i> <!-- Navigation Buttons -->
-<div class="flex justify-between pt-8 border-t border-gray-100 mt-8">
-    <button type="button" id="prev-btn" onclick="prevStep()" class="btn-secondary hidden">
-        <i class="fas fa-arrow-left mr-2"></i>
-        Précédent
-    </button>
-    <div class="flex-1"></div>
-    <button type="button" id="next-btn" onclick="nextStep()" class="btn-primary">
-        Suivant
-        <i class="fas fa-arrow-right ml-2"></i>
-    </button>
-    <button type="button" id="submit-btn" onclick="submitForm()" class="btn-primary hidden">
-        <i class="fas fa-check mr-2"></i>
-        Finaliser ma demande
-    </button>
-</div>
-
+                                <i class="fas fa-check mr-2"></i>
                                 Finaliser ma demande
                             </button>
                         </div>
-                           <!-- Navigation Buttons -->
-        <div class="flex justify-between pt-8 border-t border-gray-100 mt-8">
-            <button type="button" id="prev-btn" onclick="prevStep()" class="btn-secondary hidden">
-                <i class="fas fa-arrow-left mr-2"></i>
-                Précédent
-            </button>
-            <div class="flex-1"></div>
-            <button type="button" id="next-btn" onclick="nextStep()" class="btn-primary">
-                Suivant
-                <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-            <button type="button" id="submit-btn" onclick="submitForm()" class="btn-primary hidden">
-                <i class="fas fa-check mr-2"></i>
-                Finaliser ma demande
-            </button>
-        </div>
-     </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -1042,97 +925,87 @@
                         <p class="text-gray-600">Paiement sécurisé de votre accompagnement administratif</p>
                     </div>
 
-                    <!-- Service -->
                     <div class="bg-gray-50 rounded-2xl p-6 mb-8">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-900">Service d'accompagnement administratif</h3>
-                                <p class="text-gray-600">Traitement de votre dossier par nos experts</p>
-                            </div>
-                            <div class="text-right">
-                                <div class="text-2xl font-bold text-enedis-blue">129,80€</div>
-                                <div class="text-sm text-gray-600">TTC</div>
-                            </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Service d'accompagnement administratif</h3>
+                        <div class="flex justify-between items-center text-2xl font-bold text-enedis-blue">
+                            <span>129,80€ TTC</span>
                         </div>
+                        <p class="text-gray-600 mt-2">Traitement de votre dossier par nos experts</p>
                     </div>
 
-                    <!-- Récapitulatif commande -->
-                    <div class="border rounded-xl p-6 mb-8">
+                    <div class="mb-8">
                         <h3 class="text-lg font-semibold mb-4 text-gray-900">Récapitulatif de votre commande</h3>
-                        <div id="payment-summary" class="space-y-2 text-sm">
+                        <div id="payment-summary" class="space-y-2 text-sm bg-gray-50 p-4 rounded-lg">
                             <!-- Summary will be populated by JavaScript -->
                         </div>
                     </div>
 
-                    <!-- Stripe Payment -->
-                    <div id="card-element" class="p-4 border rounded-xl mb-6">
-                        <!-- Stripe Elements will create form elements here -->
-                    </div>
-
                     <div class="text-center">
-                        <button id="pay-button" class="btn-primary w-full">
-                            <i class="fas fa-lock mr-2"></i>
+                        <button onclick="processPayment()" class="btn-primary text-lg w-full">
+                            <i class="fas fa-lock mr-3"></i>
                             Payer 129,80€ TTC
                         </button>
-                        <p class="text-xs text-gray-500 mt-4">Paiement 100% sécurisé via Stripe</p>
+                        <p class="text-sm text-gray-500 mt-4">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            Paiement 100% sécurisé via Stripe
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Page Merci -->
-    <div id="merci" class="page">
+    <!-- Page Confirmation -->
+    <div id="confirmation" class="page">
         <div class="min-h-screen bg-gray-50 py-12">
             <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="bg-white rounded-2xl shadow-lg p-12">
-                    <div class="w-20 h-20 bg-enedis-green rounded-full flex items-center justify-center mx-auto mb-8">
-                        <i class="fas fa-check text-white text-3xl"></i>
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-check text-white text-2xl"></i>
                     </div>
                     
-                    <h1 class="text-4xl font-bold text-gray-900 mb-6">Merci pour votre confiance !</h1>
-                    <p class="text-xl text-gray-600 mb-8">Votre demande de raccordement Enedis a été transmise avec succès</p>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Merci pour votre confiance !</h1>
+                    <p class="text-gray-600 mb-8">Votre demande de raccordement Enedis a été transmise avec succès</p>
                     
-                    <div class="bg-gray-50 rounded-2xl p-8 mb-8">
-                        <h3 class="text-lg font-semibold mb-4 text-gray-900">Votre numéro de référence</h3>
-                        <div id="reference-number" class="text-3xl font-bold text-enedis-blue mb-2">REF-2025-1234</div>
-                        <p class="text-sm text-gray-600">Conservez ce numéro pour le suivi de votre dossier</p>
+                    <div class="bg-enedis-blue text-white rounded-2xl p-6 mb-8">
+                        <h3 class="text-lg font-semibold mb-2">Votre numéro de référence</h3>
+                        <div class="text-2xl font-bold" id="reference-number">REF-XXXX-2025</div>
+                        <p class="text-sm opacity-90 mt-2">Conservez ce numéro pour le suivi de votre dossier</p>
                     </div>
                     
-                    <div class="grid md:grid-cols-3 gap-6 mb-12">
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-enedis-blue rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-envelope text-white"></i>
+                    <div class="text-left space-y-6 mb-8">
+                        <h3 class="text-xl font-bold text-gray-900">Prochaines étapes :</h3>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-enedis-blue text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Confirmation par email</h4>
+                                <p class="text-gray-600">Vous recevrez un email de confirmation dans les prochaines minutes</p>
                             </div>
-                            <h4 class="font-semibold mb-2">1. Confirmation par email</h4>
-                            <p class="text-sm text-gray-600">Vous recevrez un email de confirmation dans les prochaines minutes</p>
                         </div>
                         
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-enedis-blue rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-file-alt text-white"></i>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-enedis-blue text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Préparation du dossier</h4>
+                                <p class="text-gray-600">Nos experts préparent votre dossier sous 24h</p>
                             </div>
-                            <h4 class="font-semibold mb-2">2. Préparation du dossier</h4>
-                            <p class="text-sm text-gray-600">Nos experts préparent votre dossier sous 24h</p>
                         </div>
                         
-                        <div class="text-center">
-                            <div class="w-12 h-12 bg-enedis-green rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-paper-plane text-white"></i>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-8 h-8 bg-enedis-green text-white rounded-full flex items-center justify-center font-bold">3</div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Dépôt chez Enedis</h4>
+                                <p class="text-gray-600">Votre dossier est transmis à Enedis sous 48h</p>
                             </div>
-                            <h4 class="font-semibold mb-2">3. Dépôt chez Enedis</h4>
-                            <p class="text-sm text-gray-600">Votre dossier est transmis à Enedis sous 48h</p>
                         </div>
                     </div>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button onclick="showPage('home')" class="btn-secondary">
-                            <i class="fas fa-home mr-2"></i>
-                            Retour à l'accueil
-                        </button>
+                    <div class="border-t pt-6">
+                        <p class="text-gray-600 mb-4">Questions ? Contactez-nous :</p>
                         <a href="tel:0970709570" class="btn-primary">
                             <i class="fas fa-phone mr-2"></i>
-                            Nous contacter
+                            09 70 70 95 70
                         </a>
                     </div>
                 </div>
@@ -1143,9 +1016,14 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Logo et description -->
             <div class="mb-12">
                 <div class="flex items-center mb-6">
-                    <img src="https://page1.genspark.site/v1/base64_upload/e676fe9df988ecff4cfc8149d4cbb09b" alt="Enedis Raccordement" class="h-12 w-auto">
+                    <img src="https://page1.genspark.site/v1/base64_upload/e676fe9df988ecff4cfc8149d4cbb09b" alt="Enedis Raccordement" class="h-10 w-auto mr-4">
+                    <div>
+                        <div class="text-white font-semibold">Votre partenaire</div>
+                        <div class="text-gray-400 text-sm">raccordement au réseau d'Enedis</div>
+                    </div>
                 </div>
                 <p class="text-gray-400 max-w-lg">
                     Service expert N°1 en France pour raccordement électrique Enedis. Accompagnement administratif pour particuliers, professionnels et collectivités.
@@ -1153,36 +1031,40 @@
             </div>
             
             <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <!-- Raccordement Électrique -->
                 <div>
                     <h3 class="text-lg font-semibold mb-6 text-enedis-green">Raccordement Électrique</h3>
                     <ul class="space-y-3 text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors">Raccordement Enedis en ligne</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Branchement maison neuve</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Demande raccordement Enedis</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Délai raccordement électrique</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Délai raccordement électrique Enedis</a></li>
                     </ul>
                 </div>
                 
+                <!-- Services Raccordement -->
                 <div>
                     <h3 class="text-lg font-semibold mb-6 text-enedis-green">Services Raccordement</h3>
                     <ul class="space-y-3 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Raccordement particulier</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Raccordement professionnel</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Raccordement électrique particulier</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Raccordement électrique professionnel</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Branchement compteur Linky</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Déplacement compteur électrique</a></li>
                     </ul>
                 </div>
                 
+                <!-- Services Spécialisés -->
                 <div>
                     <h3 class="text-lg font-semibold mb-6 text-enedis-green">Services Spécialisés</h3>
                     <ul class="space-y-3 text-gray-400">
                         <li><a href="#" class="hover:text-white transition-colors">Raccordement provisoire chantier</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Modification branchement</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Modification branchement électrique</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Raccordement photovoltaïque</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Viabilisation terrain électrique</a></li>
                     </ul>
                 </div>
                 
+                <!-- Contact -->
                 <div>
                     <h3 class="text-lg font-semibold mb-6 text-enedis-green">Nous contacter</h3>
                     <div class="space-y-4 text-gray-400">
@@ -1196,7 +1078,7 @@
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-clock text-enedis-green mr-3"></i>
-                            <span>Lundi-Vendredi 8h-18h</span>
+                            <span>Lun-Ven 8h-18h</span>
                         </div>
                     </div>
                 </div>
@@ -1215,33 +1097,16 @@
         </div>
     </footer>
 
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
         // Variables globales
         let currentStep = 1;
         const maxSteps = 4;
         let formData = {};
-        let stripe;
-        let elements;
-        let cardElement;
-
+        let addressTimeout;
+        
         // Initialize Stripe
-        function initializeStripe() {
-            stripe = Stripe('pk_live_51MUY3KF0p2SYXeXzW4ebN4wdgqfmu9Mc8kTpm3XmBiyotz6kYZICKXNy73SWcmq1vCViETjWgcko8R6xd4TJbste00OL2WUCvP');
-            elements = stripe.elements();
-            
-            const style = {
-                base: {
-                    fontSize: '16px',
-                    color: '#424770',
-                    '::placeholder': {
-                        color: '#aab7c4',
-                    },
-                },
-            };
-            
-            cardElement = elements.create('card', {style});
-            cardElement.mount('#card-element');
-        }
+        const stripe = Stripe('pk_live_51MUY3KF0p2SYXeXzW4ebN4wdgqfmu9Mc8kTpm3XmBiyotz6kYZICKXNy73SWcmq1vCViETjWgcko8R6xd4TJbste00OL2WUCvP');
 
         // Navigation entre pages
         function showPage(pageId) {
@@ -1250,22 +1115,12 @@
             });
             document.getElementById(pageId).classList.add('active');
             
-            if (pageId === 'paiement' && !stripe) {
-                initializeStripe();
+            // Google Ads tracking for form start
+            if (pageId === 'formulaire') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-16698052873/5o3ICMLjpMUaEtmioJo-'
+                });
             }
-        }
-
-        // Google Ads Form Start Conversion
-        function gtag_report_conversion_start() {
-            gtag('event', 'conversion', {
-                'send_to': 'AW-16698052873/5o3ICMLjpMUaEtmioJo-'
-            });
-        }
-
-        // Start form with conversion tracking
-        function startForm() {
-            gtag_report_conversion_start();
-            showPage('formulaire');
         }
 
         // Menu mobile
@@ -1274,29 +1129,11 @@
             menu.classList.toggle('hidden');
         }
 
-        // French phone formatting
-        function formatPhoneNumber(value) {
-            const numbers = value.replace(/\D/g, '');
-            const truncated = numbers.substring(0, 10);
-            
-            if (truncated.length >= 2) {
-                return truncated.replace(/(\d{2})(?=\d)/g, '$1 ');
-            }
-            return truncated;
-        }
-
-        // Validate French phone
-        function isValidFrenchPhone(phone) {
-            const cleaned = phone.replace(/\s/g, '');
-            return /^(0[1-9])(\d{8})$/.test(cleaned);
-        }
-
         // User type selection
         function selectUserType(type) {
             document.querySelectorAll('#step-1 .radio-option').forEach(el => {
                 el.classList.remove('selected');
             });
-            
             event.currentTarget.classList.add('selected');
             document.querySelector(`input[value="${type}"]`).checked = true;
             
@@ -1308,43 +1145,36 @@
             
             if (type === 'professionnel') {
                 professionalFields.classList.remove('hidden');
-                document.querySelector('input[name="raisonSociale"]').setAttribute('required', 'required');
-                document.querySelector('input[name="siren"]').setAttribute('required', 'required');
             } else if (type === 'collectivite') {
                 collectivityFields.classList.remove('hidden');
-                document.querySelector('input[name="nomCollectivite"]').setAttribute('required', 'required');
-                document.querySelector('input[name="sirenCollectivite"]').setAttribute('required', 'required');
             }
             
             formData.userType = type;
         }
 
+        // Generic option selection
         function selectOption(name, value) {
             document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
                 input.closest('.radio-option').classList.remove('selected');
             });
-            
             event.currentTarget.classList.add('selected');
             document.querySelector(`input[name="${name}"][value="${value}"]`).checked = true;
-            
             formData[name] = value;
         }
 
+        // Alimentation selection with power options
         function selectAlimentation(type) {
             document.querySelectorAll('input[name="typeAlimentation"]').forEach(input => {
                 input.closest('.radio-option').classList.remove('selected');
             });
-            
             event.currentTarget.classList.add('selected');
-            document.querySelector(`input[name="typeAlimentation"][value="${type}"]`).checked = true;
+            document.querySelector(`input[value="${type}"]`).checked = true;
             
             const puissanceSection = document.getElementById('puissance-section');
             const puissanceSelect = document.getElementById('puissance-select');
             
             if (type !== 'ne-sais-pas') {
                 puissanceSection.classList.remove('hidden');
-                puissanceSelect.setAttribute('required', 'required');
-                
                 puissanceSelect.innerHTML = '<option value="">Sélectionnez la puissance</option>';
                 
                 if (type === 'monophase') {
@@ -1363,214 +1193,251 @@
                 }
             } else {
                 puissanceSection.classList.add('hidden');
-                puissanceSelect.removeAttribute('required');
             }
             
             formData.typeAlimentation = type;
         }
 
-        // Address autocomplete
-        let debounceTimer;
-        function setupAddressAutocomplete() {
-            const addressInput = document.getElementById('address-autocomplete');
-            const dropdown = document.getElementById('address-dropdown');
-            
-            addressInput.addEventListener('input', function() {
-                clearTimeout(debounceTimer);
-                const query = this.value;
-                
-                if (query.length < 3) {
-                    dropdown.classList.add('hidden');
-                    return;
-                }
-                
-                debounceTimer = setTimeout(() => {
-                    fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(query)}&limit=5`)
-                        .then(response => response.json())
-                        .then(data => {
-                            dropdown.innerHTML = '';
-                            
-                            if (data.features && data.features.length > 0) {
-                                data.features.forEach(feature => {
-                                    const option = document.createElement('div');
-                                    option.className = 'address-option';
-                                    option.innerHTML = feature.properties.label;
-                                    option.addEventListener('click', () => {
-                                        selectAddress(feature);
-                                        dropdown.classList.add('hidden');
-                                    });
-                                    dropdown.appendChild(option);
-                                });
-                                dropdown.classList.remove('hidden');
-                            } else {
-                                dropdown.classList.add('hidden');
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Address API error:', error);
-                            dropdown.classList.add('hidden');
-                        });
-                }, 300);
-            });
-            
-            // Hide dropdown when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!addressInput.contains(e.target) && !dropdown.contains(e.target)) {
-                    dropdown.classList.add('hidden');
-                }
-            });
+        // Phone number formatting
+        function formatPhoneNumber(value) {
+            const numbers = value.replace(/\D/g, '');
+            const truncated = numbers.substring(0, 10);
+            if (truncated.length >= 2) {
+                return truncated.replace(/(\d{2})(?=\d)/g, '$1 ');
+            }
+            return truncated;
         }
 
-        function selectAddress(feature) {
-            const props = feature.properties;
+        // French address autocomplete
+        function setupAddressAutocomplete() {
+            const addressInput = document.getElementById('address-input');
+            const suggestionsContainer = document.getElementById('address-suggestions');
             
-            document.getElementById('address-autocomplete').value = props.name + ' ' + props.housenumber || props.label;
-            document.getElementById('postal-project').value = props.postcode || '';
-            document.getElementById('city-project').value = props.city || '';
-            
-            // Store coordinates if needed
-            if (feature.geometry && feature.geometry.coordinates) {
-                formData.coordinates = {
-                    longitude: feature.geometry.coordinates[0],
-                    latitude: feature.geometry.coordinates[1]
-                };
+            if (addressInput) {
+                addressInput.addEventListener('input', function() {
+                    const query = this.value.trim();
+                    
+                    clearTimeout(addressTimeout);
+                    
+                    if (query.length < 3) {
+                        suggestionsContainer.classList.add('hidden');
+                        return;
+                    }
+                    
+                    addressTimeout = setTimeout(() => {
+                        fetch(`https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(query)}&limit=5`)
+                            .then(response => response.json())
+                            .then(data => {
+                                suggestionsContainer.innerHTML = '';
+                                
+                                if (data.features && data.features.length > 0) {
+                                    data.features.forEach(feature => {
+                                        const suggestion = document.createElement('div');
+                                        suggestion.className = 'address-suggestion';
+                                        suggestion.textContent = feature.properties.label;
+                                        
+                                        suggestion.addEventListener('click', () => {
+                                            addressInput.value = feature.properties.name + (feature.properties.housenumber ? ` ${feature.properties.housenumber}` : '') + ` ${feature.properties.street || ''}`;
+                                            document.getElementById('postal-project').value = feature.properties.postcode || '';
+                                            document.getElementById('city-project').value = feature.properties.city || '';
+                                            suggestionsContainer.classList.add('hidden');
+                                        });
+                                        
+                                        suggestionsContainer.appendChild(suggestion);
+                                    });
+                                    
+                                    suggestionsContainer.classList.remove('hidden');
+                                } else {
+                                    suggestionsContainer.classList.add('hidden');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching addresses:', error);
+                                suggestionsContainer.classList.add('hidden');
+                            });
+                    }, 300);
+                });
+                
+                // Hide suggestions when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!addressInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
+                        suggestionsContainer.classList.add('hidden');
+                    }
+                });
             }
         }
 
-        // Same address functionality
-        function setupSameAddress() {
-            const checkbox = document.getElementById('same-address');
+        // Address management
+        function setupAddressManagement() {
+            const sameAddressCheckbox = document.getElementById('same-address');
             const projectFields = document.getElementById('project-address-fields');
             
-            checkbox.addEventListener('change', function() {
-                if (this.checked) {
-                    projectFields.style.display = 'none';
-                    
-                    // Copy billing address to project
-                    document.querySelector('input[name="adresseProjet"]').value = document.querySelector('input[name="adresseFacturation"]').value;
-                    document.querySelector('input[name="complementProjet"]').value = document.querySelector('input[name="complementFacturation"]').value;
-                    document.querySelector('input[name="codePostalProjet"]').value = document.querySelector('input[name="codePostalFacturation"]').value;
-                    document.querySelector('input[name="villeProjet"]').value = document.querySelector('input[name="villeFacturation"]').value;
-                    
-                    // Remove required attributes
-                    document.querySelector('input[name="adresseProjet"]').removeAttribute('required');
-                    document.querySelector('input[name="codePostalProjet"]').removeAttribute('required');
-                    document.querySelector('input[name="villeProjet"]').removeAttribute('required');
-                } else {
-                    projectFields.style.display = 'block';
-                    
-                    // Add required attributes back
-                    document.querySelector('input[name="adresseProjet"]').setAttribute('required', 'required');
-                    document.querySelector('input[name="codePostalProjet"]').setAttribute('required', 'required');
-                    document.querySelector('input[name="villeProjet"]').setAttribute('required', 'required');
-                }
-            });
+            if (sameAddressCheckbox) {
+                sameAddressCheckbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        projectFields.style.display = 'none';
+                        
+                        // Copy facturation address to project
+                        const facturationFields = ['adresseFacturation', 'complementFacturation', 'codePostalFacturation', 'villeFacturation'];
+                        const projectFields = ['adresseProjet', 'complementProjet', 'codePostalProjet', 'villeProjet'];
+                        
+                        facturationFields.forEach((factField, index) => {
+                            const factValue = document.querySelector(`input[name="${factField}"]`)?.value || '';
+                            const projectInput = document.querySelector(`input[name="${projectFields[index]}"]`);
+                            if (projectInput) {
+                                projectInput.value = factValue;
+                            }
+                        });
+                    } else {
+                        projectFields.style.display = 'block';
+                    }
+                });
+            }
         }
 
         // Form validation
-        function validateStep(stepNumber) {
-            const step = document.getElementById(`step-${stepNumber}`);
-            const requiredFields = step.querySelectorAll('[required]');
+        function validateStep(step) {
+            const stepElement = document.getElementById(`step-${step}`);
+            const requiredFields = stepElement.querySelectorAll('[required]');
             let isValid = true;
             
             // Clear previous errors
-            step.querySelectorAll('.error-message').forEach(el => el.classList.add('hidden'));
-            step.querySelectorAll('.form-input').forEach(el => el.style.borderColor = '#e5e7eb');
+            stepElement.querySelectorAll('.error-message').forEach(error => {
+                error.classList.add('hidden');
+            });
             
+            // Check required fields
             requiredFields.forEach(field => {
                 if (!field.value.trim()) {
-                    showFieldError(field, `${field.name}-error`, 'Ce champ est obligatoire');
+                    const errorElement = document.getElementById(`${field.name}-error`);
+                    if (errorElement) {
+                        errorElement.classList.remove('hidden');
+                    }
+                    field.style.borderColor = '#ef4444';
                     isValid = false;
+                } else {
+                    field.style.borderColor = '#e5e7eb';
                 }
             });
             
             // Step-specific validation
-            if (stepNumber === 1) {
-                // User type validation
+            if (step === 1) {
                 const userType = document.querySelector('input[name="userType"]:checked');
                 if (!userType) {
-                    showError('userType-error', 'Veuillez sélectionner votre type d\'utilisateur');
+                    document.getElementById('userType-error').classList.remove('hidden');
                     isValid = false;
                 }
                 
-                // Phone validation
-                const phone = document.querySelector('input[name="telephone"]').value;
-                if (phone && !isValidFrenchPhone(phone)) {
-                    showFieldError(document.querySelector('input[name="telephone"]'), 'telephone-error', 'Veuillez saisir un numéro de téléphone français valide');
+                // Validate phone
+                const phone = document.querySelector('input[name="telephone"]').value.replace(/\s/g, '');
+                if (phone.length !== 10 || !/^[0-9]{10}$/.test(phone)) {
+                    document.getElementById('telephone-error').classList.remove('hidden');
                     isValid = false;
                 }
                 
-                // Email validation
+                // Validate email
                 const email = document.querySelector('input[name="email"]').value;
-                if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    showFieldError(document.querySelector('input[name="email"]'), 'email-error', 'Veuillez saisir une adresse email valide');
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    document.getElementById('email-error').classList.remove('hidden');
                     isValid = false;
                 }
                 
-                // SIREN validation
-                const userTypeValue = userType ? userType.value : '';
-                if (userTypeValue === 'professionnel') {
+                // Validate conditional fields
+                if (userType?.value === 'professionnel') {
+                    const raisonSociale = document.querySelector('input[name="raisonSociale"]').value;
                     const siren = document.querySelector('input[name="siren"]').value;
-                    if (siren && !/^\d{9}$/.test(siren.replace(/\s/g, ''))) {
-                        showFieldError(document.querySelector('input[name="siren"]'), 'siren-error', 'Le SIREN doit contenir exactement 9 chiffres');
+                    
+                    if (!raisonSociale.trim()) {
+                        document.getElementById('raisonSociale-error').classList.remove('hidden');
                         isValid = false;
                     }
-                } else if (userTypeValue === 'collectivite') {
-                    const siren = document.querySelector('input[name="sirenCollectivite"]').value;
-                    if (siren && !/^\d{9}$/.test(siren.replace(/\s/g, ''))) {
-                        showFieldError(document.querySelector('input[name="sirenCollectivite"]'), 'sirenCollectivite-error', 'Le SIREN doit contenir exactement 9 chiffres');
+                    
+                    if (!/^[0-9]{9}$/.test(siren)) {
+                        document.getElementById('siren-error').classList.remove('hidden');
+                        isValid = false;
+                    }
+                }
+                
+                if (userType?.value === 'collectivite') {
+                    const nomCollectivite = document.querySelector('input[name="nomCollectivite"]').value;
+                    const sirenCollectivite = document.querySelector('input[name="sirenCollectivite"]').value;
+                    
+                    if (!nomCollectivite.trim()) {
+                        document.getElementById('nomCollectivite-error').classList.remove('hidden');
+                        isValid = false;
+                    }
+                    
+                    if (!/^[0-9]{9}$/.test(sirenCollectivite)) {
+                        document.getElementById('sirenCollectivite-error').classList.remove('hidden');
                         isValid = false;
                     }
                 }
             }
             
-            if (stepNumber === 2) {
-                // Postal code validation
-                const postalFields = ['codePostalFacturation', 'codePostalProjet'];
-                postalFields.forEach(fieldName => {
-                    const field = document.querySelector(`input[name="${fieldName}"]`);
-                    if (field && field.hasAttribute('required') && field.value && !/^\d{5}$/.test(field.value)) {
-                        showFieldError(field, `${fieldName}-error`, 'Code postal invalide (5 chiffres requis)');
-                        isValid = false;
-                    }
-                });
+            if (step === 2) {
+                // Validate postal codes
+                const postalFacturation = document.querySelector('input[name="codePostalFacturation"]').value;
+                const postalProjet = document.querySelector('input[name="codePostalProjet"]').value;
+                
+                if (!/^[0-9]{5}$/.test(postalFacturation)) {
+                    document.getElementById('codePostalFacturation-error').classList.remove('hidden');
+                    isValid = false;
+                }
+                
+                const sameAddress = document.getElementById('same-address').checked;
+                if (!sameAddress && !/^[0-9]{5}$/.test(postalProjet)) {
+                    document.getElementById('codePostalProjet-error').classList.remove('hidden');
+                    isValid = false;
+                }
             }
             
-            if (stepNumber === 3) {
-                // Type raccordement validation
+            if (step === 3) {
                 const typeRaccordement = document.querySelector('input[name="typeRaccordement"]:checked');
-                if (!typeRaccordement) {
-                    showError('typeRaccordement-error', 'Veuillez sélectionner un type de raccordement');
-                    isValid = false;
-                }
-                
-                // Type project validation
                 const typeProjet = document.querySelector('select[name="typeProjet"]').value;
-                if (!typeProjet) {
-                    showFieldError(document.querySelector('select[name="typeProjet"]'), 'typeProjet-error', 'Veuillez sélectionner un type de projet');
-                    isValid = false;
-                }
-                
-                // Type alimentation validation
                 const typeAlimentation = document.querySelector('input[name="typeAlimentation"]:checked');
-                if (!typeAlimentation) {
-                    showError('typeAlimentation-error', 'Veuillez sélectionner un type d\'alimentation');
+                
+                if (!typeRaccordement) {
+                    document.getElementById('typeRaccordement-error').classList.remove('hidden');
                     isValid = false;
                 }
                 
-                // Puissance validation (if required)
-                const puissanceSelect = document.querySelector('select[name="puissance"]');
-                if (puissanceSelect && puissanceSelect.hasAttribute('required') && !puissanceSelect.value) {
-                    showFieldError(puissanceSelect, 'puissance-error', 'Veuillez sélectionner une puissance');
+                if (!typeProjet) {
+                    document.getElementById('typeProjet-error').classList.remove('hidden');
                     isValid = false;
+                }
+                
+                if (!typeAlimentation) {
+                    document.getElementById('typeAlimentation-error').classList.remove('hidden');
+                    isValid = false;
+                }
+                
+                // Check puissance if alimentation is not "ne-sais-pas"
+                if (typeAlimentation && typeAlimentation.value !== 'ne-sais-pas') {
+                    const puissance = document.querySelector('select[name="puissance"]').value;
+                    if (!puissance) {
+                        document.getElementById('puissance-error').classList.remove('hidden');
+                        isValid = false;
+                    }
                 }
             }
             
-            if (stepNumber === 4) {
-                // CGV validation
-                const cgv = document.querySelector('input[name="acceptCGV"]');
-                if (!cgv.checked) {
-                    showError('acceptCGV-error', 'Vous devez accepter les conditions générales');
+            if (step === 4) {
+                const etatProjet = document.querySelector('select[name="etatProjet"]').value;
+                const delaiSouhaite = document.querySelector('select[name="delaiSouhaite"]').value;
+                const acceptCGV = document.querySelector('input[name="acceptCGV"]').checked;
+                
+                if (!etatProjet) {
+                    document.getElementById('etatProjet-error').classList.remove('hidden');
+                    isValid = false;
+                }
+                
+                if (!delaiSouhaite) {
+                    document.getElementById('delaiSouhaite-error').classList.remove('hidden');
+                    isValid = false;
+                }
+                
+                if (!acceptCGV) {
+                    document.getElementById('acceptCGV-error').classList.remove('hidden');
                     isValid = false;
                 }
             }
@@ -1578,88 +1445,87 @@
             return isValid;
         }
 
-        function showFieldError(field, errorId, message) {
-            field.style.borderColor = '#ef4444';
-            showError(errorId, message);
-        }
-
-        function showError(errorId, message) {
-            const errorEl = document.getElementById(errorId);
-            if (errorEl) {
-                errorEl.textContent = message;
-                errorEl.classList.remove('hidden');
+        // Step navigation
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                // Send notification after step 1
+                if (currentStep === 1) {
+                    sendNotification('step1');
+                }
+                
+                if (currentStep < maxSteps) {
+                    currentStep++;
+                    updateStep();
+                }
             }
         }
 
-       // Step navigation
-function nextStep() {
-    if (validateStep(currentStep)) {
-        // Send notification after step 1
-        if (currentStep === 1) {
-            sendNotification('step1');
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStep();
+            }
         }
-        
-        if (currentStep < maxSteps) {
-            currentStep++;
-            updateStep();
+
+        function updateStep() {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Show current step
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            
+            // Update progress bar
+            const progressWidth = (currentStep / maxSteps) * 100;
+            document.getElementById('progress-fill').style.width = `${progressWidth}%`;
+            
+            // Update labels
+            document.getElementById('step-label').textContent = `Étape ${currentStep} sur ${maxSteps}`;
+            
+            const stepTitles = [
+                'Type d\'utilisateur',
+                'Adresses',
+                'Détails du projet',
+                'Validation finale'
+            ];
+            document.getElementById('step-title').textContent = stepTitles[currentStep - 1];
+            
+            // Update buttons - THIS IS THE KEY FIX
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Step 1: Hide prev, show next, hide submit
+            if (currentStep === 1) {
+                prevBtn.classList.add('hidden');
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+            // Steps 2-3: Show prev, show next, hide submit
+            else if (currentStep === 2 || currentStep === 3) {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+            // Step 4: Show prev, hide next, show submit
+            else if (currentStep === 4) {
+                prevBtn.classList.remove('hidden');
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+                updateSummary();
+            }
         }
-    }
-}
 
-function prevStep() {
-    if (currentStep > 1) {
-        currentStep--;
-        updateStep();
-    }
-}
-
-function updateStep() {
-    document.querySelectorAll('.form-step').forEach(step => {
-        step.classList.remove('active');
-    });
-    
-    document.getElementById(`step-${currentStep}`).classList.add('active');
-    
-    const progressWidth = (currentStep / maxSteps) * 100;
-    document.getElementById('progress-fill').style.width = `${progressWidth}%`;
-    
-    document.getElementById('step-label').textContent = `Étape ${currentStep} sur ${maxSteps}`;
-    
-    const stepTitles = [
-        'Type d\'utilisateur',
-        'Adresses',
-        'Détails du projet',
-        'Validation finale'
-    ];
-    document.getElementById('step-title').textContent = stepTitles[currentStep - 1];
-    
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    // Bouton précédent - caché seulement à l'étape 1
-    prevBtn.classList.toggle('hidden', currentStep === 1);
-    
-    // Gestion des boutons suivant/finaliser
-    if (currentStep === 4) {
-        // Étape 4 = finale : cacher "Suivant", montrer "Finaliser"
-        nextBtn.classList.add('hidden');
-        submitBtn.classList.remove('hidden');
-        updateSummary();
-    } else {
-        // Étapes 1-3 : montrer "Suivant", cacher "Finaliser"
-        nextBtn.classList.remove('hidden');
-        submitBtn.classList.add('hidden');
-    }
-}
-
-function updateSummary() {
-    const form = document.getElementById('raccordement-form');
-    const formData = new FormData(form);
+        // Update summary
+        function updateSummary() {
             const summaryEl = document.getElementById('form-summary');
+            const form = document.getElementById('raccordement-form');
+            const formData = new FormData(form);
+            
             let summary = '<div class="grid md:grid-cols-2 gap-6">';
             
-            // User info
+            // Personal info
             summary += '<div><h4 class="font-semibold mb-2 text-gray-900">Vos coordonnées</h4>';
             summary += `<p><strong>Type:</strong> ${formData.get('userType') || 'Non renseigné'}</p>`;
             summary += `<p><strong>Nom:</strong> ${formData.get('prenom')} ${formData.get('nom')}</p>`;
@@ -1678,106 +1544,84 @@ function updateSummary() {
             if (formData.get('puissance')) {
                 summary += `<p><strong>Puissance:</strong> ${formData.get('puissance')} kVA</p>`;
             }
-            const adresseProjet = formData.get('adresseProjet') || formData.get('adresseFacturation');
-            const cpProjet = formData.get('codePostalProjet') || formData.get('codePostalFacturation');
-            const villeProjet = formData.get('villeProjet') || formData.get('villeFacturation');
-            summary += `<p><strong>Adresse projet:</strong> ${adresseProjet} ${cpProjet} ${villeProjet}</p>`;
+            summary += `<p><strong>Adresse projet:</strong> ${formData.get('adresseProjet')} ${formData.get('codePostalProjet')} ${formData.get('villeProjet')}</p>`;
             summary += '</div>';
             
             summary += '</div>';
             summaryEl.innerHTML = summary;
         }
 
+        // Submit form
         function submitForm() {
             if (validateStep(currentStep)) {
-                // Send complete form notification
+                // Send form completion notification
                 sendNotification('complete');
                 
-                // Google Ads Form Submit Conversion
+                // Google Ads conversion tracking
                 gtag('event', 'conversion', {
                     'send_to': 'AW-16698052873/PqZMCJW-tMUaEtmioJo-'
                 });
                 
-                // Populate payment summary
-                updatePaymentSummary();
-                
-                // Go to payment page
+                // Redirect to payment
                 showPage('paiement');
+                updatePaymentSummary();
             }
         }
 
+        // Update payment summary
         function updatePaymentSummary() {
+            const summaryEl = document.getElementById('payment-summary');
             const form = document.getElementById('raccordement-form');
             const formData = new FormData(form);
             
-            const summaryEl = document.getElementById('payment-summary');
-            let summary = '';
-            
-            summary += `<div class="flex justify-between"><span>Nom:</span><span>${formData.get('prenom')} ${formData.get('nom')}</span></div>`;
-            summary += `<div class="flex justify-between"><span>Email:</span><span>${formData.get('email')}</span></div>`;
-            summary += `<div class="flex justify-between"><span>Type:</span><span>${formData.get('userType')}</span></div>`;
-            summary += `<div class="flex justify-between"><span>Raccordement:</span><span>${formData.get('typeRaccordement')}</span></div>`;
+            let summary = `
+                <p><strong>Client:</strong> ${formData.get('prenom')} ${formData.get('nom')}</p>
+                <p><strong>Type:</strong> ${formData.get('userType')}</p>
+                <p><strong>Raccordement:</strong> ${formData.get('typeRaccordement')}</p>
+                <p><strong>Email:</strong> ${formData.get('email')}</p>
+            `;
             
             summaryEl.innerHTML = summary;
         }
 
-        // Payment processing
-        function setupPayment() {
-            const payButton = document.getElementById('pay-button');
-            
-            payButton.addEventListener('click', async () => {
-                payButton.disabled = true;
-                payButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Traitement...';
-                
-                const {token, error} = await stripe.createToken(cardElement);
-                
-                if (error) {
-                    console.error('Stripe error:', error);
-                    payButton.disabled = false;
-                    payButton.innerHTML = '<i class="fas fa-lock mr-2"></i>Payer 129,80€ TTC';
-                    alert('Erreur de paiement: ' + error.message);
-                } else {
-                    // Process payment
-                    processPayment(token);
-                }
-            });
-        }
-
-        function processPayment(token) {
-            // In a real implementation, you would send the token to your server
-            // For demo purposes, we'll simulate success
+        // Process payment
+        function processPayment() {
+            // Here you would integrate with Stripe
+            // For now, simulate payment success
             setTimeout(() => {
-                // Google Ads Purchase Conversion
+                // Google Ads purchase conversion
                 gtag('event', 'conversion', {
                     'send_to': 'AW-16698052873/IFUxCJLHtMUaEtmioJo-'
                 });
                 
-                // Generate reference number
+                // Generate reference
                 const reference = generateReference();
                 document.getElementById('reference-number').textContent = reference;
                 
-                // Show thank you page
-                showPage('merci');
+                // Show confirmation page
+                showPage('confirmation');
             }, 2000);
         }
 
+        // Generate reference
         function generateReference() {
             const now = new Date();
             const year = now.getFullYear();
             const random = Math.floor(Math.random() * 9000) + 1000;
-            return `REF-${year}-${random}`;
+            return `REF-${random}-${year}`;
         }
 
-        // Email notifications
+        // Send notifications
         function sendNotification(type) {
             const form = document.getElementById('raccordement-form');
             const formData = new FormData(form);
             
-            const data = {
+            // Prepare notification data
+            const notificationData = {
                 type: type,
                 userType: formData.get('userType'),
-                prenom: formData.get('prenom'),
                 nom: formData.get('nom'),
+                prenom: formData.get('prenom'),
                 email: formData.get('email'),
                 telephone: formData.get('telephone'),
                 timestamp: new Date().toISOString()
@@ -1785,29 +1629,27 @@ function updateSummary() {
             
             if (type === 'complete') {
                 // Add all form data for complete notification
-                for (let [key, value] of formData.entries()) {
-                    data[key] = value;
-                }
+                notificationData.typeRaccordement = formData.get('typeRaccordement');
+                notificationData.typeProjet = formData.get('typeProjet');
+                notificationData.adresseProjet = formData.get('adresseProjet');
+                notificationData.codePostalProjet = formData.get('codePostalProjet');
+                notificationData.villeProjet = formData.get('villeProjet');
             }
             
-            // In a real implementation, send to your backend
-            console.log('Sending notification:', data);
+            // Here you would send to your backend
+            console.log('Sending notification:', notificationData);
             
             // Simulate API call
-            fetch('/api/notifications', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            }).catch(error => {
-                console.log('Notification simulation:', data);
-            });
+            // fetch('/api/notify', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(notificationData)
+            // });
         }
 
-        // Initialize
+        // Initialization
         document.addEventListener('DOMContentLoaded', function() {
-            // Phone formatting
+            // Setup phone formatting
             const phoneInput = document.getElementById('phone-input');
             if (phoneInput) {
                 phoneInput.addEventListener('input', function() {
@@ -1815,18 +1657,29 @@ function updateSummary() {
                 });
             }
             
-            // Address functionality
+            // Setup address autocomplete
             setupAddressAutocomplete();
-            setupSameAddress();
             
-            // Payment setup
-            setTimeout(setupPayment, 1000);
+            // Setup address management
+            setupAddressManagement();
             
-            // Form start tracking
-            document.querySelectorAll('[onclick*="startForm"]').forEach(button => {
-                button.addEventListener('click', gtag_report_conversion_start);
-            });
+            // Initial step update
+            updateStep();
         });
+
+        // Google Ads conversion functions
+        function gtag_report_conversion_start(url) {
+            var callback = function () {
+                if (typeof(url) != 'undefined') {
+                    window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-16698052873/5o3ICMLjpMUaEtmioJo-',
+                'event_callback': callback
+            });
+            return false;
+        }
     </script>
 </body>
 </html>
