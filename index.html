@@ -972,7 +972,23 @@
                                 <i class="fas fa-arrow-right ml-2"></i>
                             </button>
                             <button type="button" id="submit-btn" onclick="submitForm()" class="btn-primary hidden">
-                                <i class="fas fa-check mr-2"></i>
+                                <i class="fas fa-check mr-2"></i> <!-- Navigation Buttons -->
+<div class="flex justify-between pt-8 border-t border-gray-100 mt-8">
+    <button type="button" id="prev-btn" onclick="prevStep()" class="btn-secondary hidden">
+        <i class="fas fa-arrow-left mr-2"></i>
+        Précédent
+    </button>
+    <div class="flex-1"></div>
+    <button type="button" id="next-btn" onclick="nextStep()" class="btn-primary">
+        Suivant
+        <i class="fas fa-arrow-right ml-2"></i>
+    </button>
+    <button type="button" id="submit-btn" onclick="submitForm()" class="btn-primary hidden">
+        <i class="fas fa-check mr-2"></i>
+        Finaliser ma demande
+    </button>
+</div>
+
                                 Finaliser ma demande
                             </button>
                         </div>
